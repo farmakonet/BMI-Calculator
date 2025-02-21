@@ -1,0 +1,69 @@
+<div class="container">
+  <h2 style="font-weight:300;">Υπολογισμός Δείκτη Μάζας Σώματος <br>
+   <span style="font-size:1.5em; font-weight:500;">BMI Calculator</span></h2>
+
+  <div id="display">
+      <p id="result"></p>
+      <p id="category" style="font-weight:300; color:#ccc; font-size:1.3em;">Μετακινήστε τα κουμπιά στα.. μέτρα σας</p>
+      <p id="tip"></p>           
+   </div>
+
+   <div class="calc_row">
+      <input type="range" min="20" max="250" value="" id="weight" oninput="calculate()">
+      <span id="weight-val"> kg</span>
+   </div>
+
+   <div class="calc_row">
+      <input type="range" min="100" max="250" value="" id="height" oninput="calculate()">
+      <span id="height-val"> cm</span>
+    </div>
+    
+</div>
+
+
+
+    <script>
+ function calculate(){
+          var bmi;
+          var result = document.getElementById("result");
+          var height = parseInt(document.getElementById("height").value);
+          var weight = parseInt(document.getElementById("weight").value);
+
+          document.getElementById("weight-val").textContent = weight + " kg";
+          document.getElementById("height-val").textContent = height + " cm";
+
+          bmi = (weight / Math.pow( (height/100), 2 )).toFixed(1);
+          result.textContent = "BMI = " + bmi;
+      
+      var lite_tip=weight - (18.5 * Math.pow( (height/100), 2 ));
+      var heavy_tip=weight - (24.9 * Math.pow( (height/100), 2 ));
+
+        if(lite_tip>=0) {document.getElementById("tip").textContent = ""};
+        if(heavy_tip<=0) {document.getElementById("tip").textContent = ""};
+        if(lite_tip<0) {document.getElementById("tip").textContent = "Χρειάζεται να πάρετε, το λιγότερο, " + (Math.abs(lite_tip)).toFixed(2) + "Kg" };
+        if(heavy_tip>0) {document.getElementById("tip").textContent = "Χρειάζεται να χάσετε, το λιγότερο, " + (Math.abs(heavy_tip)).toFixed(2) + "Kg" };
+
+          if(bmi < 18.5){
+              category = "Κάτω του κανονικού 😦";
+              result.style.color = "#ffc44d";
+          }
+      
+          else if( bmi >= 18.5 && bmi <= 24.9 ){
+              category = "Κανονικό Βάρος 😊";
+              result.style.color = "#0be881";
+              document.getElementById("tip").textContent = "Δε χρειάζεται ούτε να πάρετε, ούτε να χάσετε κιλά!"
+          }
+      
+          else if( bmi > 24.9 && bmi <= 29.9 ){
+              category = "Πάνω από το κανονικό 🙁";
+              result.style.color = "orange";
+          }
+      
+          else{
+              category = "Πολύ Πάνω από το κανονικό 😮";
+              result.style.color = "red";
+          }
+
+          document.getElementById("category").textContent = category;
+      }
+      </script>  
