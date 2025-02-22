@@ -11,7 +11,7 @@ This lightweight BMI (Body Mass Index) calculator is intentionally designed as a
 - Ideal for developers who want to build their own styled version
 
 ## Usage
-Simply open the `index.html` file in your browser. Enter your weight and height, then click **Calculate BMI** to see the result.
+Simply open the `index.html` file in your browser. Drag the sliders along the bars to your weight and height and automatically see the results.
 
 ## How to Customize
 Feel free to add your own CSS styles and additional functionality. The clean structure makes it easy to integrate into any web project.
